@@ -1,3 +1,7 @@
 requests
 tiktoken
 torch
+transformers
+numpy
+sentence-transformers
+ipywidgets
