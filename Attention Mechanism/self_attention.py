@@ -29,9 +29,19 @@ class ScaledDotProductAttention(nn.Module):
         V = self.Wv(x)
         
         d_k = Q.size(-1)
+        # query, key, value = (bs, seq_len, embed_dim)
 
         scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(d_k)
         weights = torch.softmax(scores, dim=-1)
         
         return torch.matmul(weights, V)
     
+
+
+inputembedding=InputEmbedding(10,64)
+embedding=inputembedding(torch.tensor([1,2,5]))
+self_attention=ScaledDotProductAttention(64)
+attention_score=self_attention(embedding)
+print(embedding)
+print('****************************************')
+print(self_attention(embedding))
